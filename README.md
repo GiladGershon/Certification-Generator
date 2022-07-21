@@ -2,11 +2,21 @@
 The app allows educational organizations to send emails with a graduation certificate to students attached as a PDF file.
 
 GUI\
-[gui](https://giladstaticweb.blob.core.windows.net/public/gui.gif)
+<img
+  src="https://giladstaticweb.blob.core.windows.net/public/gui.gif"
+  alt="GIF"
+  title="GUI"
+  style="display: inline-block; margin: 2 auto; width: 800px">
 
 
 CERTIFICATION\
-[cert](https://giladstaticweb.blob.core.windows.net/public/certex.png)
+<img
+  src="https://giladstaticweb.blob.core.windows.net/public/certex.png"
+  alt="GIF"
+  title="GUI"
+  style="display: inline-block; margin: 2 auto; width: 800px">
+
+
 1. Upload an Excel file with the student's name and email.
 2. Choose course name and dates
 3. Click Go
@@ -16,10 +26,14 @@ CERTIFICATION\
 
 Flow
 
-[flow](https://giladstaticweb.blob.core.windows.net/public/pics.png)
+![flow](https://giladstaticweb.blob.core.windows.net/public/pics.png)
 
 Email\
-[email](https://giladstaticweb.blob.core.windows.net/public/emails.png)
+<img
+  src="https://giladstaticweb.blob.core.windows.net/public/emails.png"
+  alt="GIF"
+  title="GUI"
+  style="display: inline-block; margin: 2 auto; width: 1200">
 
 
 ## Installation
