@@ -36,7 +36,7 @@ Email\
   style="display: inline-block; margin: 2 auto; width: 1200">
 
 
-## Installation
+## Installation:
 The app has two versions:
 1. Docker Container
 2. Run on your local machine
