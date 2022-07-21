@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Certification Generator</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename ='img/icon.svg') }}">
+    <!-- CSS & js files -->
+    <link href="{{ url_for('static', filename ='css/site.css') }}" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename ='css/daterangepicker.css') }}" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename ='js/daterangepicker.js') }}"></script>
+  </head>
+  <body>
+
+
+
+    <div class="page">
+      <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <div class="container-xl">
+          
+
+          <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+           Certification Generator
+          </h1>
+          <div class="navbar-nav flex-row order-md-last">
+            <div class="nav-item d-none d-md-flex me-3">
+              
+            </div>
+           <!-- Autentication 
+            <div class="nav-item dropdown">
+                  <div>  {User_Name}  </div>
+                  <a style="font-size: 10px;" href=#>(log out)</a>
+
+              </a>
+
+            </div>
+            -->
+          </div>
+        </div>
+        
+      </header>
+   
+     
+      <div class="page-wrapper">
+        <div class="container-xl">
+          
+        </div>
+        <div class="page-body">
+          <div class="container-xl d-flex flex-column justify-content-center">
+            
+
+                                  </div>
+                                  
+
+              
+
+
+<center>
+  {% block content %}
+  {% for message in messages %}
+    
+          {{ message['title'] }}
+          {{ message['content'] }}
+      
+  {% endfor %}
+{% endblock %}
+</center>
+          <!-- start form -->
+  
+          <div id="NewRequest"  tabindex="-1">
+              <div class="modal-dialog modal-lg">
+                  <form method="post" enctype='multipart/form-data'>
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title">Send certifications</h5>
+                          </div>
+                          <div class="modal-body">
+                              <div class="row g-3 mb-2">
+                                  <div class="col-sm-4">
+                                      <label for="requestidFeld" class="col-form-label">Your Email:</label>
+                                  </div>
+                                  <div class="col-sm-4">
+                                      <input type="email" id="requestidFeld" name="member_email"
+                                             class="form-control" placeholder="your.mail@mail.com" required>
+                                            <div style="font-size: 10px"> We will let you know when we finished</div>
+                                             
+                                  </div>
+                              </div>
+  
+                              <div class="row g-3 mb-2">
+                                  <div class="col-sm-4">
+                                      <label for="course_name" class="col-form-label">Course name:</label>
+                                  </div>
+                                  <div class="col-sm-4">
+                                      <select for="course_name" id="course_name" name="course_name" 
+                                      autocomplete="off" class="form-control"  required>
+                                      <option selected="true" disabled="disabled">Choose course..</option>    
+                                       <optgroup label="Category 1">
+                                        <option value="Example Course 1: this is the course name">Example Course 1: this is the course name</option>
+                                        <option value="Example Course 2: this is the course name">Example Course 2: this is the course name</option>
+                                        <option value="Example Course 3: this is the course name">Example Course 3: this is the course name</option>
+                                       </optgroup>
+                                       <optgroup label="Category 2"></optgroup>
+                                       <option value="Example Course 4: this is the course name">Example Course 4: this is the course name</option>
+
+                                      </select>
+                                  </div>
+                                  
+                              </div>
+
+                              <div class="row g-3 mb-2">
+                                <div class="col-sm-4">
+                                    <label for="course_dates" class="col-form-label">Course dates:</label>
+                                </div>
+                                <div class="col-sm-4">
+                                  <input type="text" id="datepicker" name ="course_dates" class="form-control" required>
+                                </div>
+                              </div>
+                              <div class="row g-3 mb-2">
+                                  <div class="col-sm-4">
+                                      <label for="file" class="col-form-label">Excel file:</label>
+                                  </div>
+                                  <div class="col-sm-4">
+                                      <input type="file" id="file" name="file" 
+                                             class="form-control" accept=".xls,.xlsx" required>
+                                             <div style="font-size: 10px">  <a href="{{ url_for('static', filename ='files/students_ex_template.xlsx') }}"> Download sample template </a> </div>
+                                  </div>
+                                  
+                              </div>
+  
+                          <div class="modal-footer">
+
+                              <button type="submit" class="btn btn-primary" formaction="/api/entity?action=go">
+                                  Go
+                            </a>
+                         
+                          </div>
+                      </div>
+                  </form>
+
+             
+                                  
+                  <!-- </form> -->
+              </div>
+          </div>
+
+  
+  
+     
+  
+      </main>
+  </div>
+  
+
+  
+  <script type="text/javascript">
+        
+    $('#datepicker').daterangepicker ({
+      "dateLimit": {
+        "days": 5
+    },
+    "locale": {
+      "direction": "ltr",
+      "format": "DD/MM/YYYY",
+      "separator": " - ",
+      "applyLabel": "Apply",
+      "cancelLabel": "Cancel",
+      "fromLabel": "From",
+      "toLabel": "To",
+      "customRangeLabel": "Custom",
+      "daysOfWeek": [
+          "Su",
+          "Mo",
+          "Tu",
+          "We",
+          "Th",
+          "Fr",
+          "Sa"
+      ],
+      "monthNames": [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+      ],
+      "firstDay": 0
+  },
+   
+      "startDate": Date.now(),
+      "endDate": Date.now()
+  }, function(start, end, label) {
+  });
+  
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+          </div>
+        </div>
+   
+
+        <footer class="footer footer-transparent d-print-none">
+          <div class="container-xl">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-lg-auto ms-lg-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+
+                  <li class="list-inline-item">
+                      Made with
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink icon-filled icon-inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
+                      by <a href='https://giladgershon.net/'>Gilad Gershon 
+                      <span class="avatar avatar-xs" style="background-image: url(https://media-exp1.licdn.com/dms/image/C4D03AQFH2zp4Jx4TdQ/profile-displayphoto-shrink_200_200/0/1643695512089?e=1662595200&v=beta&t=Z6ae2L26cALcqnCB3EafJCLKYxwQRxgq99ST_lOkyQg)"></span>
+                      </a>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item">
+                    Copyright &copy; 2022
+ 
+                    All rights reserved.
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- Libs JS -->
+
+
+
+    
+  </body>
+</html>
+

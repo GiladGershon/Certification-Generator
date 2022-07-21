@@ -1,0 +1,8 @@
+Flask==2.0.3
+docx2pdf
+docx
+python-docx
+pandas
+openpyxl
+python-decouple
+redis
