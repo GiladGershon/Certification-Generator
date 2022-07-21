@@ -6,11 +6,9 @@
 import pandas as pd
 import itertools 
 import subprocess
-from flask import request
 import sys
 import os
 import redis
-from multiprocessing import Process
 
 r = redis.StrictRedis(host='localhost', port=6379, db=0, charset="utf-8", decode_responses=True)
 
@@ -36,7 +34,7 @@ class RequestsProcessor:
       newdate = date
     elif start_month == end_month:                                                        #The course is on the same month and the same year (DD-DD/MM/YYYY)
       newdate = date[0:2]+'-'+date[13:15]+'/'+date[3:5]+'/'+date[6:11]
-    elif start_month != end_month:                                                        #The course is on the same year but not on the same month (DD/MM-DD/MM/YYYY)
+    else:                                                        #The course is on the same year but not on the same month (DD/MM-DD/MM/YYYY)
       newdate = date[0:2]+'/'+start_month+'-'+date[13:15]+'/'+end_month+'/'+date[6:11]
     r.hset(redis_hash_name, "course_dates", newdate) #PUT new date after formating them
       
@@ -53,7 +51,7 @@ class RequestsProcessor:
    
     os.remove('./studentlist/'+r.hget(redis_hash_name, 'file_name')) #delete student file (we dont need the file anymore, all the data on redis.)
     r.set('process', 0)                                              #set proccess=0
-    p = subprocess.Popen([sys.executable, 'webapp/launcher.py'])       #Triger luncher.py
+    subprocess.Popen([sys.executable, 'webapp/launcher.py'])       #Triger luncher.py
      
 
 

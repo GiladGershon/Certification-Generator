@@ -1,5 +1,4 @@
 import subprocess
-from flask import request
 import sys
 import redis
 from multiprocessing import Process

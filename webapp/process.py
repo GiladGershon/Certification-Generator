@@ -3,7 +3,7 @@
 # Licensed under the MIT License.
 # --------------------------------------------------------------------------
 from multiprocessing import Pool
-from time import sleep
+import time
 from multiprocessing import Process
 import os
 import time
@@ -43,7 +43,7 @@ def task():
  
  #print start
  print('Proccess Lunch! student name: '+ student_name)
- 
+ print(short_course_name)
  
  #Create DOCX file from template
  document = Document('./static/files/CertificateFinal.docx') #Docx Certification Template

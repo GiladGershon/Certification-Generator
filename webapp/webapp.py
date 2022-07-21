@@ -3,7 +3,7 @@
 # Licensed under the MIT License.
 # --------------------------------------------------------------------------
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from webapp.requestprocessor import RequestsProcessor
 app = Flask(__name__, static_folder="../static", template_folder="../templates")
 import redis
@@ -82,7 +82,7 @@ def handler_entity_action():
             ]
          return render_template('index.html', messages=ok)       
  
- except:
+ except Exception as error:
    #Return Error
   return render_template('index.html', messages=error)   
 
